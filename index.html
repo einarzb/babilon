@@ -1,0 +1,40 @@
+
+<html ng-app="dictionaryApp">
+<head>
+  <title>dictionary - by Einar Barzilay</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-3 main">
+          <div ng-controller="dictionaryCtrl">
+              <h1>Dictionary</h1>
+              <br>
+              <input type="text" ng-model="searchWord" style="width:300px;" class="form-control" placeholder="search for word">
+              <br>
+                    <div class="dict"  ng-repeat="word in words track by $index" >
+                      <ol style="text-decoration:none;text-align:left;list-style:none;">
+                        <li>
+                            <b>{{words[$index].word}}</b>
+                            <hr style="width:80%;float:left:">
+                            {{words[$index].definition}}
+                            <br><br>
+                        </li>
+                      </ol>
+                    </div>
+                    <br>
+              </div> <!--end ctrler-->
+          </div> <!--end col-->
+      </div><!--end row-->
+
+<!-- angular -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"> </script>
+
+<script type="text/javascript" src="controller/dictionaryCtrl.js"></script>
+<script type="text/javascript" src="controller/counterCtrl.js"></script>
+<script type="text/javascript" src="service/dictionaryFactory.js"></script>
+<script type="text/javascript" src="service/counterFactory.js"></script>
+
+</body>
+</html>
