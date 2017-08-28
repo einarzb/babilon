@@ -4,7 +4,6 @@ var dictionaryFactory = {};
 var searchVal = "";
 
 dictionaryFactory.getDictionary = function(){
-    console.log("im dictionary");
     return dictionary;
 }
 

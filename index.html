@@ -16,7 +16,7 @@
                     <div class="dict" ng-show="dict" ng-repeat="word in words track by $index" >
                       <ol style="text-decoration:none;text-align:left;list-style:none;">
                         <li>
-                            <b>{{words[$index].word}}</b>
+                            <span style="font-size:2em"><b><code>{{words[$index].word}}</code></b></span>
                             <hr style="width:80%;float:left:">
                             {{words[$index].definition}}
                             <br><br>
