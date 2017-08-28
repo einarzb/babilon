@@ -11,9 +11,9 @@
           <div ng-controller="dictionaryCtrl">
               <h1>Dictionary</h1>
               <br>
-              <input type="text" ng-model="searchWord" style="width:300px;" class="form-control" placeholder="search for word">
+              <input type="text" ng-change="searchWord(searchVal)" ng-model="searchVal" style="width:300px;" class="form-control" placeholder="search for word">
               <br>
-                    <div class="dict"  ng-repeat="word in words track by $index" >
+                    <div class="dict" ng-show="dict" ng-repeat="word in words track by $index" >
                       <ol style="text-decoration:none;text-align:left;list-style:none;">
                         <li>
                             <b>{{words[$index].word}}</b>
