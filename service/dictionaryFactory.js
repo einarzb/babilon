@@ -27,12 +27,24 @@ dictionaryFactory.searchWord = function(searchVal){
     return searchVal;
 }
 
- dictionaryFactory.get2letters = function(searchVal){
+dictionaryFactory.get2letters = function(searchVal){
    var twoLetters = searchVal.slice(0,2);
    console.log(twoLetters);
    return twoLetters;
  }
 
+dictionaryFactory.abcCombinationCreator = function(){
+  var abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  var letters = [];
+  var comboAbc = {};
+
+  for (let i = 0; i < 26; ++i) {
+    for (let j = 0; j < 26; ++j) {
+        comboAbc[abc[i] + abc[j]] = letters;
+        }
+      }
+  return comboAbc
+  };
 
 // router[twoLetters][key] = definition;
 dictionaryFactory.dictionary = function(){

@@ -10,6 +10,8 @@ function($scope, dictionaryFactory) {
 
   //get all data from dictionary
   $scope.words = dictionaryFactory.getDictionary();
+  //get all combinations of abc 2-letters
+  $scope.comboAbc = dictionaryFactory.abcCombinationCreator();
 
   //function that invokes from search bar
   $scope.searchWord = function(searchVal){
