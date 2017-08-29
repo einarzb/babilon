@@ -4,15 +4,30 @@
   <title>dictionary - by Einar Barzilay</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style media="screen">
+    .main{
+      margin-top: 20px;
+    }
+    button{
+      border-radius: 5px;
+      border:none;
+      color:#fff;
+      background-color:orange;
+    }
+  </style>
 </head>
 <body>
     <div class="row">
         <div class="col-md-8 col-md-offset-3 main">
           <div ng-controller="dictionaryCtrl">
-              <h1>Dictionary</h1>
+              <h1>dic&middot;tion&middot;ary</h1>
               <br>
+              <span style="display:flex">
               <input type="text" ng-change="searchWord(searchVal)" ng-model="searchVal" style="width:300px;" class="form-control" placeholder="search for word">
+              &nbsp;&nbsp;<button type="button" ng-click="revealAllDictionary()">show all</button>
+                </span>
               <br>
+
                     <div class="dict" ng-show="dict" ng-repeat="word in words track by $index" >
                       <ol style="text-decoration:none;text-align:left;list-style:none;">
                         <li>

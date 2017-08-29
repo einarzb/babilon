@@ -5,7 +5,9 @@ var searchVal = "";
 var comboAbc = {};
 var twoLetters;
 
-
+dictionaryFactory.getDictionary = function(){
+  return dictionary;
+}
 //returns the string that the user was searching
 dictionaryFactory.searchWord = function(searchVal){
     dictionaryFactory.get2letters(searchVal);
@@ -14,7 +16,7 @@ dictionaryFactory.searchWord = function(searchVal){
 
 dictionaryFactory.get2letters = function(searchVal){
    twoLetters = searchVal.slice(0,2);
-   dictionaryFactory.dictionaryScanner(twoLetters);
+   dictionaryFactory.matcher(twoLetters);
    return twoLetters;
  }
 
@@ -31,8 +33,7 @@ dictionaryFactory.abcCombinationCreator = function(){
 }
 
 //scanning the array
-dictionaryFactory.dictionaryScanner = function(twoLetters){
-  console.log(twoLetters);
+dictionaryFactory.dictionaryScanner = function(){
     dictionary.forEach(function(dictValue) {
             let firstChar = dictValue.word[0];
             let secondChar = dictValue.word[1];
@@ -40,15 +41,15 @@ dictionaryFactory.dictionaryScanner = function(twoLetters){
 
             if(firstChar && secondChar){
               comboAbc[clueChars][dictValue.word] = dictValue.definition;
-              console.log(twoLetters);
-              console.log(dictValue.word);
-              // console.log(comboAbc[twoLetters][dictValue.word] = dictValue.definition);
             }
-    },this); //end foreach
-    // console.log(" im in dictionaryScanner searching with: " + twoLetters);
-    // console.log(comboAbc);
-
+          },this); //end foreach
     return comboAbc;
+}
+
+dictionaryFactory.matcher = function(twoLetters){
+  console.log("im in matcher");
+  console.log(twoLetters);
+  return console.log(comboAbc[twoLetters]);
 }
 
 var dictionary = [
