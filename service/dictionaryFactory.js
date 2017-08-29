@@ -3,21 +3,8 @@ app.factory('dictionaryFactory', function(){
 var dictionaryFactory = {};
 var searchVal = "";
 var comboAbc = {};
+var twoLetters;
 
-//returns the full dictionary
-
-dictionaryFactory.getWords = function(){
-  for (var i = 0; i < dictionary.length; i++) {
-    var word = dictionary[i].word;
-  }
-}
-
-dictionaryFactory.getDefinition = function(){
-  for (var i = 0; i < dictionary.length; i++) {
-    var definition = dictionary[i].definition;
-    console.log();
-  }
-}
 
 //returns the string that the user was searching
 dictionaryFactory.searchWord = function(searchVal){
@@ -26,56 +13,44 @@ dictionaryFactory.searchWord = function(searchVal){
 }
 
 dictionaryFactory.get2letters = function(searchVal){
-   var twoLetters = searchVal.slice(0,2);
-   console.log("2letters of users" , twoLetters);
-   dictionaryFactory.matchToDictionary(searchVal, comboAbc);
+   twoLetters = searchVal.slice(0,2);
+   dictionaryFactory.dictionaryScanner(twoLetters);
    return twoLetters;
  }
 
 dictionaryFactory.abcCombinationCreator = function(){
-  var abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
   var letters = {};
+  const abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
   for (let i = 0; i < 26; ++i) {
     for (let j = 0; j < 26; ++j) {
         comboAbc[abc[i] + abc[j]] = letters;
         }
-      }
-  console.log("dictionary mudafucker")
-  console.log(dictionary[5].definition);
-
-  dictionary.forEach(function(dictValue) {
-        console.log(dictValue);
-        let firstChar = dictValue.word[0];
-        let secondChar = dictValue.word[1];
-        let clueChar = firstChar + secondChar;
-        console.log(clueChar);
-        if(clueChar){
-          letters[clueChar][dictValue.word] = dictValue.definition;
-        }
-  },this);
-  return letters;
-  //  let firstletter = element.word[0];
-  //  let secondletter = element.word[1];
-  //  console.log(firstletter);
-  //  console.log(secondletter);
-  // //  if (firstletter && secondletter) {
-  // //      router[firstletter + secondletter][element.word] = element.definition;
-  // //     }
-  //   }, this);
-  //return letters;
-  // return comboAbc
-  };
-
-
-dictionaryFactory.matchToDictionary = function(twoLetters, comboAbc){
-  if (twoLetters != null) {
-    console.log(twoLetters);
-
-  }
+    }
+  return comboAbc;
 }
 
-// router[twoLetters][key] = definition;
+//scanning the array
+dictionaryFactory.dictionaryScanner = function(twoLetters){
+  console.log(twoLetters);
+    dictionary.forEach(function(dictValue) {
+            let firstChar = dictValue.word[0];
+            let secondChar = dictValue.word[1];
+            let clueChars = firstChar + secondChar;
+
+            if(firstChar && secondChar){
+              comboAbc[clueChars][dictValue.word] = dictValue.definition;
+              console.log(twoLetters);
+              console.log(dictValue.word);
+              // console.log(comboAbc[twoLetters][dictValue.word] = dictValue.definition);
+            }
+    },this); //end foreach
+    // console.log(" im in dictionaryScanner searching with: " + twoLetters);
+    // console.log(comboAbc);
+
+    return comboAbc;
+}
+
 var dictionary = [
 {"word":"suspendisse","definition":"Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis."},
 {"word":"sapien","definition":"Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo."},
