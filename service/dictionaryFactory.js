@@ -2,13 +2,9 @@ app.factory('dictionaryFactory', function(){
 
 var dictionaryFactory = {};
 var searchVal = "";
-var dictionary;
 var comboAbc = {};
 
 //returns the full dictionary
-dictionaryFactory.getDictionary = function(){
-    return dictionaryFactory.dictionary();
-}
 
 dictionaryFactory.getWords = function(){
   for (var i = 0; i < dictionary.length; i++) {
@@ -19,6 +15,7 @@ dictionaryFactory.getWords = function(){
 dictionaryFactory.getDefinition = function(){
   for (var i = 0; i < dictionary.length; i++) {
     var definition = dictionary[i].definition;
+    console.log();
   }
 }
 
@@ -44,19 +41,42 @@ dictionaryFactory.abcCombinationCreator = function(){
         comboAbc[abc[i] + abc[j]] = letters;
         }
       }
-  return comboAbc
+  console.log("dictionary mudafucker")
+  console.log(dictionary[5].definition);
+
+  dictionary.forEach(function(dictValue) {
+        console.log(dictValue);
+        let firstChar = dictValue.word[0];
+        let secondChar = dictValue.word[1];
+        let clueChar = firstChar + secondChar;
+        console.log(clueChar);
+        if(clueChar){
+          letters[clueChar][dictValue.word] = dictValue.definition;
+        }
+  },this);
+  return letters;
+  //  let firstletter = element.word[0];
+  //  let secondletter = element.word[1];
+  //  console.log(firstletter);
+  //  console.log(secondletter);
+  // //  if (firstletter && secondletter) {
+  // //      router[firstletter + secondletter][element.word] = element.definition;
+  // //     }
+  //   }, this);
+  //return letters;
+  // return comboAbc
   };
 
 
 dictionaryFactory.matchToDictionary = function(twoLetters, comboAbc){
   if (twoLetters != null) {
     console.log(twoLetters);
+
   }
 }
 
 // router[twoLetters][key] = definition;
-dictionaryFactory.dictionary = function(){
-  return [
+var dictionary = [
 {"word":"suspendisse","definition":"Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis."},
 {"word":"sapien","definition":"Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo."},
 {"word":"tellus","definition":"Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci."},
@@ -1057,7 +1077,7 @@ dictionaryFactory.dictionary = function(){
 {"word":"nulla","definition":"Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci."},
 {"word":"porta","definition":"Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum."},
 {"word":"vestibulum","definition":"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti."}
-]};
+];
 
 return dictionaryFactory;
 

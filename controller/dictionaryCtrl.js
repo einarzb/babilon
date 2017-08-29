@@ -6,10 +6,10 @@ app.controller('dictionaryCtrl',
 function($scope, dictionaryFactory) {
   //initilaze
   $scope.searchVal = "";
-  $scope.dict = false; // hide results
+  // $scope.dict = false; // hide results
 
   //get all data from dictionary
-  $scope.words = dictionaryFactory.getDictionary();
+  // $scope.words = dictionaryFactory.getDictionary();
   //get all combinations of abc 2-letters
   $scope.comboAbc = dictionaryFactory.abcCombinationCreator();
 
@@ -17,7 +17,7 @@ function($scope, dictionaryFactory) {
   $scope.searchWord = function(searchVal){
       $scope.searchVal = dictionaryFactory.searchWord(searchVal);
       //reveal results
-      $scope.dict = true;
+      // $scope.dict = true;
   }
 
 
