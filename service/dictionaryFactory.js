@@ -4,6 +4,7 @@ var dictionaryFactory = {};
 var searchVal = "";
 var dictionary;
 
+//returns the full dictionary
 dictionaryFactory.getDictionary = function(){
     return dictionaryFactory.dictionary();
 }
@@ -20,14 +21,19 @@ dictionaryFactory.getDefinition = function(){
   }
 }
 
+//returns the string that the user was searching
 dictionaryFactory.searchWord = function(searchVal){
+    dictionaryFactory.get2letters(searchVal);
     return searchVal;
 }
 
-// dictionaryFactory.get2letters = function(twoLetters){
-// }
+ dictionaryFactory.get2letters = function(searchVal){
+   var twoLetters = searchVal.slice(0,2);
+   console.log(twoLetters);
+   return twoLetters;
+ }
 
-// var twoLetters = key.splice(2)
+
 // router[twoLetters][key] = definition;
 dictionaryFactory.dictionary = function(){
   return [
