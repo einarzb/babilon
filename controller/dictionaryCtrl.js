@@ -15,7 +15,6 @@ function($scope, dictionaryFactory) {
 
   //function that invokes from search bar
   $scope.searchWord = function(searchVal){
-    console.log(searchVal);
       $scope.searchVal = dictionaryFactory.searchWord(searchVal);
       //reveal results
       $scope.dict = true;

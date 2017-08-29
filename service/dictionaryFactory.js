@@ -3,6 +3,7 @@ app.factory('dictionaryFactory', function(){
 var dictionaryFactory = {};
 var searchVal = "";
 var dictionary;
+var comboAbc = {};
 
 //returns the full dictionary
 dictionaryFactory.getDictionary = function(){
@@ -29,14 +30,14 @@ dictionaryFactory.searchWord = function(searchVal){
 
 dictionaryFactory.get2letters = function(searchVal){
    var twoLetters = searchVal.slice(0,2);
-   console.log(twoLetters);
+   console.log("2letters of users" , twoLetters);
+   dictionaryFactory.matchToDictionary(searchVal, comboAbc);
    return twoLetters;
  }
 
 dictionaryFactory.abcCombinationCreator = function(){
   var abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  var letters = [];
-  var comboAbc = {};
+  var letters = {};
 
   for (let i = 0; i < 26; ++i) {
     for (let j = 0; j < 26; ++j) {
@@ -45,6 +46,13 @@ dictionaryFactory.abcCombinationCreator = function(){
       }
   return comboAbc
   };
+
+
+dictionaryFactory.matchToDictionary = function(twoLetters, comboAbc){
+  if (twoLetters != null) {
+    console.log(twoLetters);
+  }
+}
 
 // router[twoLetters][key] = definition;
 dictionaryFactory.dictionary = function(){
